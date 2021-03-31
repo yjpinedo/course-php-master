@@ -37,6 +37,22 @@ class formulario
         $stmt      = null;
     }
 
+    public static function obtenerRegistro($tabla, $item, $valor)
+    {
+        $stmt      = Conexion::conectar();
+        $resultado = $stmt->prepare("SELECT * FROM $tabla WHERE $item = ?");
+        $respuesta = $resultado->execute([$valor]);
+
+        if ($respuesta) {
+            return $resultado->fetch();
+        } else {
+            print_r($stmt->errorInfo());
+        }
+
+        $resultado = null;
+        $stmt      = null;
+    }
+
     public static function ingreso($tabla, $item, $valor)
     {
         $stmt      = Conexion::conectar();
@@ -45,6 +61,22 @@ class formulario
 
         if ($respuesta) {
             return $resultado->fetch();
+        } else {
+            print_r($stmt->errorInfo());
+        }
+
+        $resultado = null;
+        $stmt      = null;
+    }
+
+    public static function actualizar($tabla, $datos)
+    {
+        $stmt      = Conexion::conectar();
+        $resultado = $stmt->prepare("UPDATE $tabla SET nombre = ?, correo = ? WHERE id = ?");
+        $respuesta = $resultado->execute([$datos['nombre'], $datos['correo'], $datos['id']]);
+
+        if ($respuesta) {
+            return 'ok';
         } else {
             print_r($stmt->errorInfo());
         }

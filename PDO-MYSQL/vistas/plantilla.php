@@ -40,7 +40,7 @@
         <div class="container">
             <?php
                 if (isset($_GET['pagina'])) {
-                    if ($_GET['pagina'] == 'inicio' || $_GET['pagina'] == 'registro' || $_GET['pagina'] == 'ingreso' || $_GET['pagina'] == 'salir') {
+                    if ($_GET['pagina'] == 'inicio' || $_GET['pagina'] == 'registro' || $_GET['pagina'] == 'ingreso' || $_GET['pagina'] == 'salir'|| $_GET['pagina'] == 'editar') {
                         include 'paginas/' . $_GET['pagina'] . '.php';
                     } else {
                         include 'paginas/404.php';

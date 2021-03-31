@@ -15,6 +15,7 @@ if (!isset($_SESSION['validarIngreso'])) {
     }
 }
 $registros = FormularioControlador::obtenerRegistros();
+
 ?>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -36,7 +37,7 @@ $registros = FormularioControlador::obtenerRegistros();
                     <td><?= date('d/m/Y', strtotime($registro['fecha'])) ?></td>
                     <td>
                         <div class="btn btn-group">
-                            <button class="btn btn-outline-info btn-sm"><i class="fas fa-edit"></i></button>
+                            <a href="index.php?pagina=editar&id=<?=$registro['id'];?>" class="btn btn-outline-info btn-sm"><i class="fas fa-edit"></i></a>
                             <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                         </div>
                     </td>

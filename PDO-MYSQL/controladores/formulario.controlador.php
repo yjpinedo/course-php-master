@@ -22,6 +22,12 @@ class FormularioControlador
         return $registros;
     }
 
+    public static function obtenerRegistro($item, $valor)
+    {
+        $registro = Formulario::obtenerRegistro('registros',$item, $valor);
+        return $registro;
+    }
+
     public function ingreso()
     {
         if (isset($_POST['correo'])) {
@@ -45,6 +51,19 @@ class FormularioControlador
                 echo
                 '<div class="alert alert-danger text-center" role="alert">Error en el ingreso!</div>';
             }
+        }
+    }
+    public static function actuaizar()
+    {
+        if (isset($_POST['nombre'])) {
+            $tabla = 'registros';
+            $datos = [
+                'nombre' => $_POST['nombre'],
+                'correo' => $_POST['correo'],
+                'id' => $_POST['id']
+            ];
+            $respuesta = Formulario::actualizar($tabla, $datos);
+            return $respuesta;
         }
     }
 }
