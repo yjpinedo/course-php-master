@@ -1,4 +1,19 @@
 <?php
+if (!isset($_SESSION['validarIngreso'])) {
+    echo
+    '<script>
+        window.location = "index.php?pagina=ingreso";
+    </script>';
+    return;
+} else {
+    if ($_SESSION['validarIngreso'] != 'ok') {
+        echo
+        '<script>
+            window.location = "index.php?pagina=ingreso";
+        </script>';
+        return;
+    }
+}
 $registros = FormularioControlador::obtenerRegistros();
 ?>
 <div class="table-responsive">
@@ -15,7 +30,7 @@ $registros = FormularioControlador::obtenerRegistros();
         <tbody>
             <?php foreach ($registros as $index => $registro) : ?>
                 <tr>
-                    <td><?= ($index+1) ?></td>
+                    <td><?= ($index + 1) ?></td>
                     <td><?= $registro['nombre'] ?></td>
                     <td><?= $registro['correo'] ?></td>
                     <td><?= date('d/m/Y', strtotime($registro['fecha'])) ?></td>

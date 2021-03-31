@@ -27,6 +27,7 @@ class FormularioControlador
         if (isset($_POST['correo'])) {
             $registros = Formulario::ingreso('registros', 'correo', $_POST['correo']);
             if ($registros['correo'] == $_POST['correo'] && $registros['clave'] == $_POST['clave']) {
+                $_SESSION['validarIngreso'] = 'ok';
                 echo
                 '<script>
                     if(window.history.replaceState) {
