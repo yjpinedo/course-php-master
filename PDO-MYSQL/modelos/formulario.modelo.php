@@ -3,7 +3,7 @@
 require_once 'conexion.php';
 $conexion = new Conexion();
 
-class formulario
+class Formulario
 {
     public static function registro($tabla, $datos)
     {
@@ -83,5 +83,19 @@ class formulario
 
         $resultado = null;
         $stmt      = null;
+    }
+
+    public static function eliminar($tabla, $item, $valor)
+    {
+        $stmt = Conexion::conectar();
+        $resultado = $stmt->prepare("DELETE FROM $tabla WHERE $item = ?");
+        $respuesta = $resultado->execute([$valor]);
+        if ($respuesta) {
+            return 'ok';
+        } else {
+            print_r($stmt->errorInfo());
+        }
+        $resultado = null;
+        $stmt = null;
     }
 }

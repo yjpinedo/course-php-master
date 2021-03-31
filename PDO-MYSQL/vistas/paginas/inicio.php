@@ -37,8 +37,15 @@ $registros = FormularioControlador::obtenerRegistros();
                     <td><?= date('d/m/Y', strtotime($registro['fecha'])) ?></td>
                     <td>
                         <div class="btn btn-group">
-                            <a href="index.php?pagina=editar&id=<?=$registro['id'];?>" class="btn btn-outline-info btn-sm"><i class="fas fa-edit"></i></a>
-                            <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                        <a href="index.php?pagina=editar&id=<?=$registro['id'];?>" class="btn btn-outline-info btn-sm mx-1"><i class="fas fa-edit"></i></a>
+                        <form method="post">
+                            <input type="hidden" name="id" value="<?=$registro['id'];?>">
+                            <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                            <?php
+                            $eliminar = new FormularioControlador();
+                            $eliminar->eliminar();
+                            ?>
+                        </form>
                         </div>
                     </td>
                 </tr>

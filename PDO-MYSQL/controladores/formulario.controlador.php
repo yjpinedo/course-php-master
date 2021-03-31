@@ -66,4 +66,22 @@ class FormularioControlador
             return $respuesta;
         }
     }
+
+    public function eliminar()
+    {
+        if (isset($_POST['id'])) {
+            $respuesta = Formulario::eliminar('registros', 'id', $_POST['id']);
+            if ($respuesta == 'ok') {
+                echo
+                '<script>
+                    if(window.history.replaceState) {
+                        window.history.replaceState(null, null, window.location.href);
+                    }
+                    window.location = "index.php?pagina=inicio";
+                </script>';
+            } else {
+
+            }
+        }
+    }
 }
