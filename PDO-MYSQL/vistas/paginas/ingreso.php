@@ -24,7 +24,6 @@
         $formulario->ingreso();
         if ($formulario == 'ok') {
             // Funcion para limpiar la cache del navegador
-
         }
         ?>
     </form>
