@@ -5,14 +5,26 @@ class FormularioControlador
     public static function registro()
     {
         if (isset($_POST['nombre'])) {
-            $tabla = 'registros';
-            $datos = [
-                'nombre' => $_POST['nombre'],
-                'correo' => $_POST['correo'],
-                'clave'  => $_POST['clave'],
-            ];
+            if (preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['nombre'])) {
+                if (preg_match('/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/', $_POST['correo'])) {
+                    if (preg_match('/^[0-9a-zA-Z]+$/', $_POST['clave'])) {
+                        $tabla = 'registros';
+                        $datos = [
+                            'nombre' => $_POST['nombre'],
+                            'correo' => $_POST['correo'],
+                            'clave'  => $_POST['clave'],
+                        ];
 
-            return Formulario::registro($tabla, $datos);
+                        return Formulario::registro($tabla, $datos);
+                    } else {
+                        return 'clave';
+                    }
+                } else {
+                    return 'correo';
+                }
+            } else {
+                return 'nombre';
+            }
         }
     }
 
@@ -24,7 +36,7 @@ class FormularioControlador
 
     public static function obtenerRegistro($item, $valor)
     {
-        $registro = Formulario::obtenerRegistro('registros',$item, $valor);
+        $registro = Formulario::obtenerRegistro('registros', $item, $valor);
         return $registro;
     }
 
@@ -53,6 +65,7 @@ class FormularioControlador
             }
         }
     }
+
     public static function actuaizar()
     {
         if (isset($_POST['nombre'])) {
@@ -60,7 +73,7 @@ class FormularioControlador
             $datos = [
                 'nombre' => $_POST['nombre'],
                 'correo' => $_POST['correo'],
-                'id' => $_POST['id']
+                'id'     => $_POST['id'],
             ];
             $respuesta = Formulario::actualizar($tabla, $datos);
             return $respuesta;
@@ -80,7 +93,6 @@ class FormularioControlador
                     window.location = "index.php?pagina=inicio";
                 </script>';
             } else {
-
             }
         }
     }

@@ -7,5 +7,3 @@ Class PlantillaControlador
         include 'vistas/plantilla.php';
     }
 }
-
-?>

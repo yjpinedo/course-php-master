@@ -42,6 +42,44 @@
                 Registro exitoso!
               </div>';
         }
+        if ($formulario == 'nombre')  {
+            echo
+            '<script>
+                if(window.history.replaceState) {
+                    window.history.replaceState(null, null, window.location.href);
+                }
+            </script>';
+            echo
+            '<div class="alert alert-danger text-center" role="alert">
+                Error nombre!
+              </div>';
+        }
+
+        if ($formulario == 'correo')  {
+            echo
+            '<script>
+                if(window.history.replaceState) {
+                    window.history.replaceState(null, null, window.location.href);
+                }
+            </script>';
+            echo
+            '<div class="alert alert-danger text-center" role="alert">
+                Error correo!
+              </div>';
+        }
+
+        if ($formulario == 'clave')  {
+            echo
+            '<script>
+                if(window.history.replaceState) {
+                    window.history.replaceState(null, null, window.location.href);
+                }
+            </script>';
+            echo
+            '<div class="alert alert-danger text-center" role="alert">
+                Error correo!
+              </div>';
+        }
         ?>
         <button type="submit" class="btn btn-primary">Registrar <i class="fas fa-paper-plane"></i></button>
     </form>
