@@ -15,7 +15,6 @@ if (!isset($_SESSION['validarIngreso'])) {
     }
 }
 $registros = FormularioControlador::obtenerRegistros();
-
 ?>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -37,9 +36,9 @@ $registros = FormularioControlador::obtenerRegistros();
                     <td><?= date('d/m/Y', strtotime($registro['fecha'])) ?></td>
                     <td>
                         <div class="btn btn-group">
-                        <a href="index.php?pagina=editar&id=<?=$registro['id'];?>" class="btn btn-outline-info btn-sm mx-1"><i class="fas fa-edit"></i></a>
+                        <a href="index.php?pagina=editar&token=<?=$registro['token'];?>" class="btn btn-outline-info btn-sm mx-1"><i class="fas fa-edit"></i></a>
                         <form method="post">
-                            <input type="hidden" name="id" value="<?=$registro['id'];?>">
+                            <input type="hidden" name="token" value="<?=$registro['token'];?>">
                             <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                             <?php
                             $eliminar = new FormularioControlador();

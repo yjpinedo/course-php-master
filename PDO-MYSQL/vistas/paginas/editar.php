@@ -1,12 +1,12 @@
 <?php
-if (isset($_GET['id'])) {
-    $usuario = FormularioControlador::obtenerRegistro('id', $_GET['id']);
+if (isset($_GET['token'])) {
+    $usuario = FormularioControlador::obtenerRegistro('token', $_GET['token']);
 }
 ?>
 
 <div class="d-flex justify-content-center">
     <form class="p-5 bg-light" method="POST">
-        <input type="hidden" value="<?=$usuario['id'];?>" name="id">
+        <input type="hidden" value="<?=$usuario['token'];?>" name="token">
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -41,6 +41,41 @@ if (isset($_GET['id'])) {
                     window.location = "index.php?pagina=inicio";
                 }, 3000);
             </script>';
+        }
+        if ($actualizar == 'error') {
+            '<script>
+                if(window.history.replaceState) {
+                    window.history.replaceState(null, null, window.location.href);
+                }
+            </script>';
+            echo
+            '<div class="alert alert-danger text-center" role="alert">Error al actualizar los datos</div>';
+        }
+
+        if ($actualizar == 'nombre') {
+            echo
+            '<script>
+                if(window.history.replaceState) {
+                    window.history.replaceState(null, null, window.location.href);
+                }
+            </script>';
+            echo
+            '<div class="alert alert-danger text-center" role="alert">
+                Error nombre!
+              </div>';
+        }
+
+        if ($actualizar == 'correo') {
+            echo
+            '<script>
+                if(window.history.replaceState) {
+                    window.history.replaceState(null, null, window.location.href);
+                }
+            </script>';
+            echo
+            '<div class="alert alert-danger text-center" role="alert">
+                Error correo!
+              </div>';
         }
         ?>
     </form>

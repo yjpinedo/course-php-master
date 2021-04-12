@@ -9,10 +9,12 @@ class FormularioControlador
                 if (preg_match('/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/', $_POST['correo'])) {
                     if (preg_match('/^[0-9a-zA-Z]+$/', $_POST['clave'])) {
                         $tabla = 'registros';
+                        $token = md5($_POST['nombre'] . '+' . $_POST['correo']);
                         $datos = [
                             'nombre' => $_POST['nombre'],
                             'correo' => $_POST['correo'],
                             'clave'  => $_POST['clave'],
+                            'token'  => $token,
                         ];
 
                         return Formulario::registro($tabla, $datos);
@@ -69,30 +71,49 @@ class FormularioControlador
     public static function actuaizar()
     {
         if (isset($_POST['nombre'])) {
-            $tabla = 'registros';
-            $datos = [
-                'nombre' => $_POST['nombre'],
-                'correo' => $_POST['correo'],
-                'id'     => $_POST['id'],
-            ];
-            $respuesta = Formulario::actualizar($tabla, $datos);
+            if (preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['nombre'])) {
+                if (preg_match('/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/', $_POST['correo'])) {
+                    $tabla    = 'registros';
+                    $registro = Formulario::obtenerRegistro("$tabla", 'token', $_POST['token']);
+                    $token    = md5($registro['nombre'] . '+' . $registro['correo']);
+                    if ($_POST['token'] == $token) {
+                        $datos = [
+                            'nombre'    => $_POST['nombre'],
+                            'correo'    => $_POST['correo'],
+                            'token'     => $_POST['token'],
+                        ];
+                        $respuesta = Formulario::actualizar($tabla, $datos);
+                    } else {
+                        $respuesta = 'error';
+                    }
+                } else {
+                    return 'correo';
+                }
+            }else {
+                return 'nombre';
+            }
+
             return $respuesta;
         }
     }
 
     public function eliminar()
     {
-        if (isset($_POST['id'])) {
-            $respuesta = Formulario::eliminar('registros', 'id', $_POST['id']);
-            if ($respuesta == 'ok') {
-                echo
+        if (isset($_POST['token'])) {
+            $tabla = 'registros';
+            $registro = Formulario::obtenerRegistro("$tabla", 'token', $_POST['token']);
+            $token = md5($registro['nombre'] . '+' . $registro['correo']);
+            if ($token == $_POST['token']) {
+                $respuesta = Formulario::eliminar('registros', 'token', $_POST['token']);
+                if ($respuesta == 'ok') {
+                    echo
                 '<script>
                     if(window.history.replaceState) {
                         window.history.replaceState(null, null, window.location.href);
                     }
                     window.location = "index.php?pagina=inicio";
                 </script>';
-            } else {
+                }
             }
         }
     }
