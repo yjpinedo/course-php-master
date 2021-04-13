@@ -48,6 +48,10 @@ class FormularioControlador
             $registros = Formulario::ingreso('registros', 'correo', $_POST['correo']);
             if ($registros['correo'] == $_POST['correo'] && $registros['clave'] == $_POST['clave']) {
                 $_SESSION['validarIngreso'] = 'ok';
+                Formulario::actualizarIntentos('registros', [
+                    'intentos' => 0,
+                    'id'       => $registros['id'],
+                ]);
                 echo
                 '<script>
                     if(window.history.replaceState) {
@@ -56,7 +60,15 @@ class FormularioControlador
                     window.location = "index.php?pagina=inicio";
                 </script>';
             } else {
-                echo
+                if ($registros['intentos'] < 3) {
+                    $intentos          = ($registros['intentos'] + 1);
+                    Formulario::actualizarIntentos('registros', [
+                        'intentos' => $intentos,
+                        'id'       => $registros['id'],
+                    ]);
+                } else {
+                    echo '<div class="alert alert-warning text-center" role="alert">RECAPTCHA Debes validar que no eres un robot</div>';
+                }
                 '<script>
                     if(window.history.replaceState) {
                         window.history.replaceState(null, null, window.location.href);

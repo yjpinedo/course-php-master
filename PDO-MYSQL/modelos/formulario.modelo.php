@@ -79,6 +79,20 @@ class Formulario
         $stmt      = null;
     }
 
+    public static function actualizarIntentos($tabla, $datos)
+    {
+        $stmt      = Conexion::conectar();
+        $resultado = $stmt->prepare("UPDATE $tabla SET intentos = ? WHERE id = ?");
+        $respuesta = $resultado->execute([$datos['intentos'], $datos['id']]);
+        if ($respuesta) {
+            return 'ok';
+        } else {
+            print_r($stmt->errorInfo());
+        }
+        $resultado = null;
+        $stmt      = null;
+    }
+
     public static function eliminar($tabla, $item, $valor)
     {
         $stmt = Conexion::conectar();
