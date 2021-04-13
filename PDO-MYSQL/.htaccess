@@ -16,7 +16,7 @@ deny from allow
 </Files>
 
 # denegar acceso a robots maliciosos, extractores de webs y navegadores offline
-RewriteBase /
+#RewriteBase /
 RewriteCond %{HTTP_USER_AGENT} ^Anarchie [OR]
 RewriteCond %{HTTP_USER_AGENT} ^ASPSeek [OR]
 RewriteCond %{HTTP_USER_AGENT} ^attach [OR]

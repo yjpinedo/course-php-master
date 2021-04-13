@@ -88,11 +88,13 @@ class FormularioControlador
                     $tabla    = 'registros';
                     $registro = Formulario::obtenerRegistro("$tabla", 'token', $_POST['token']);
                     $token    = md5($registro['nombre'] . '+' . $registro['correo']);
-                    if ($_POST['token'] == $token) {
-                        $datos = [
+                    if ($_POST['token'] == $token && $registro['id'] == $_POST['id']) {
+                        $_token    = md5($_POST['nombre'] . '+' . $_POST['correo']);
+                        $datos     = [
                             'nombre'    => $_POST['nombre'],
                             'correo'    => $_POST['correo'],
-                            'token'     => $_POST['token'],
+                            'token'     => $_token,
+                            'id'        => $_POST['id'],
                         ];
                         $respuesta = Formulario::actualizar($tabla, $datos);
                     } else {
@@ -101,7 +103,7 @@ class FormularioControlador
                 } else {
                     return 'correo';
                 }
-            }else {
+            } else {
                 return 'nombre';
             }
 
@@ -112,9 +114,9 @@ class FormularioControlador
     public function eliminar()
     {
         if (isset($_POST['token'])) {
-            $tabla = 'registros';
+            $tabla    = 'registros';
             $registro = Formulario::obtenerRegistro("$tabla", 'token', $_POST['token']);
-            $token = md5($registro['nombre'] . '+' . $registro['correo']);
+            $token    = md5($registro['nombre'] . '+' . $registro['correo']);
             if ($token == $_POST['token']) {
                 $respuesta = Formulario::eliminar('registros', 'token', $_POST['token']);
                 if ($respuesta == 'ok') {

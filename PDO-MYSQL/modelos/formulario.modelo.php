@@ -68,8 +68,8 @@ class Formulario
     public static function actualizar($tabla, $datos)
     {
         $stmt      = Conexion::conectar();
-        $resultado = $stmt->prepare("UPDATE $tabla SET nombre = ?, correo = ? WHERE token = ?");
-        $respuesta = $resultado->execute([$datos['nombre'], $datos['correo'], $datos['token']]);
+        $resultado = $stmt->prepare("UPDATE $tabla SET nombre = ?, correo = ?, token = ? WHERE id = ?");
+        $respuesta = $resultado->execute([$datos['nombre'], $datos['correo'], $datos['token'], $datos['id']]);
         if ($respuesta) {
             return 'ok';
         } else {

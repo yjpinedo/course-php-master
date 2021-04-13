@@ -7,6 +7,7 @@ if (isset($_GET['token'])) {
 <div class="d-flex justify-content-center">
     <form class="p-5 bg-light" method="POST">
         <input type="hidden" value="<?=$usuario['token'];?>" name="token">
+        <input type="hidden" value="<?=$usuario['id'];?>" name="id">
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-prepend">
