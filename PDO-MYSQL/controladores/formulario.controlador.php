@@ -13,7 +13,7 @@ class FormularioControlador
                         $datos = [
                             'nombre' => $_POST['nombre'],
                             'correo' => $_POST['correo'],
-                            'clave'  => $_POST['clave'],
+                            'clave'  => password_hash($_POST['clave'], PASSWORD_BCRYPT),
                             'token'  => $token,
                         ];
 
@@ -46,7 +46,7 @@ class FormularioControlador
     {
         if (isset($_POST['correo'])) {
             $registros = Formulario::ingreso('registros', 'correo', $_POST['correo']);
-            if ($registros['correo'] == $_POST['correo'] && $registros['clave'] == $_POST['clave']) {
+            if ($registros['correo'] == $_POST['correo'] && password_verify($_POST['clave'], $registros['clave'])) {
                 $_SESSION['validarIngreso'] = 'ok';
                 Formulario::actualizarIntentos('registros', [
                     'intentos' => 0,

@@ -38,7 +38,7 @@ if (isset($_GET['token'])) {
             echo
             '<script>
                 setTimeout(function(){
-                    window.location = "index.php?pagina=inicio";
+                    window.location = "inicio";
                 }, 3000);
             </script>';
         }

@@ -21,16 +21,16 @@
         <div class="container">
             <ul class="nav nav-justified py-2 nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link <?= isset($_GET['pagina']) ? ($_GET['pagina'] == 'registro' ? 'active' : '') : 'active' ?>" href="index.php?pagina=registro">Registro</a>
+                    <a class="nav-link <?= isset($_GET['pagina']) ? ($_GET['pagina'] == 'registro' ? 'active' : '') : 'active' ?>" href="registro">Registro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= isset($_GET['pagina']) && $_GET['pagina'] == 'ingreso' ? 'active' : '' ?>" href="index.php?pagina=ingreso">Ingreso</a>
+                    <a class="nav-link <?= isset($_GET['pagina']) && $_GET['pagina'] == 'ingreso' ? 'active' : '' ?>" href="ingreso">Ingreso</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= isset($_GET['pagina']) && $_GET['pagina'] == 'inicio' ? 'active' : '' ?>" href="index.php?pagina=inicio">Inicio</a>
+                    <a class="nav-link <?= isset($_GET['pagina']) && $_GET['pagina'] == 'inicio' ? 'active' : '' ?>" href="inicio">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= isset($_GET['pagina']) && $_GET['pagina'] == 'salir' ? 'active' : '' ?>" href="index.php?pagina=salir">Salir</a>
+                    <a class="nav-link <?= isset($_GET['pagina']) && $_GET['pagina'] == 'salir' ? 'active' : '' ?>" href="salir">Salir</a>
                 </li>
             </ul>
         </div>
