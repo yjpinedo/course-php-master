@@ -3,6 +3,12 @@ Options All -Indexes
 RewriteEngine On
 RewriteRule ^([-a-zA-Z0-9/]+)$ index.php?pagina=$1
 
+# que la web siempre inicie con certificado de seguridad
+#RewriteCond %{HTTP_HOST} !^$
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteCond %{HTTPS}s ^on
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
 # asegurando el archivo htacces
 <Files .htaccess>
 order allow,deny
