@@ -33,15 +33,26 @@ if (isset($_GET['token'])) {
                 if(window.history.replaceState) {
                     window.history.replaceState(null, null, window.location.href);
                 }
+                let datos = new FormData();
+                datos.append("id", "'.$usuario['id'].'");
+                $.ajax({
+                    url: "ajax/formulario.ajax.php",
+                    method: "POST",
+                    data: datos,
+                    caches: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: "json",
+                    success: function (respuesta) {
+                        if (respuesta) {
+                            $("#nombre").val(respuesta.nombre);
+                            $("#correo").val(respuesta.correo);
+                        }
+                    }
+                });
             </script>';
             echo
             '<div class="alert alert-success text-center" role="alert">Datos actualizados con éxito!</div>';
-            echo
-            '<script>
-                setTimeout(function(){
-                    window.location = "inicio";
-                }, 3000);
-            </script>';
         }
         if ($actualizar == 'error') {
             '<script>

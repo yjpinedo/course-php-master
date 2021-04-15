@@ -6,7 +6,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-envelope"></i></div>
                 </div>
-                <input type="email" class="form-control" id="correo" name="correo">
+                <input type="email" class="form-control" name="correo">
             </div>
         </div>
         <div class="form-group">
@@ -15,7 +15,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-key"></i></div>
                 </div>
-                <input type="password" class="form-control" id="clave" name="clave">
+                <input type="password" class="form-control" name="clave">
             </div>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Inisiar Sesión </button>
