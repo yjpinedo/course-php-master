@@ -48,7 +48,17 @@
 </head>
 
 <body>
+    <?php
+        include 'paginas/modulos/cabecera.php';
+        include 'paginas/modulos/redes-sociales.php';
+        include 'paginas/modulos/buscador-movil.php';
+        include 'paginas/modulos/menu.php';
 
+        include 'paginas/incio.php';
+
+
+        include 'paginas/modulos/footer.php';
+    ?>
 
     <script src="vistas/js/script.js"></script>
 </body>
