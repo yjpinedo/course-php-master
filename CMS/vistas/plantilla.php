@@ -54,8 +54,7 @@
         include 'paginas/modulos/buscador-movil.php';
         include 'paginas/modulos/menu.php';
 
-        include 'paginas/incio.php';
-
+        include 'paginas/inicio.php';
 
         include 'paginas/modulos/footer.php';
     ?>
