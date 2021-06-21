@@ -1,3 +1,7 @@
+<?php
+	$blog = BlogControlador::obtenerBlog();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
