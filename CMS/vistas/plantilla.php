@@ -3,7 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Juanito Travel</title>
+	<title>Master - PHP</title>
+
+	<meta name="title" content="Master - PHP">
+	<meta name="description" content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio harum iste suscipit amet pariatur labore numquam quia quam ex dicta id omnis, doloribus est non nam asperiores neque! Alias, totam.">
 	<link rel="icon" href="vistas/img/icono.jpg">
 
 	<!--=====================================
