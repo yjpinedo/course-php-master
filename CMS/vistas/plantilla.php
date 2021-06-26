@@ -7,11 +7,22 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Master - PHP</title>
+	<title><?= $blog['titulo']; ?></title>
 
-	<meta name="title" content="Master - PHP">
-	<meta name="description" content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio harum iste suscipit amet pariatur labore numquam quia quam ex dicta id omnis, doloribus est non nam asperiores neque! Alias, totam.">
-	<link rel="icon" href="vistas/img/icono.jpg">
+	<meta name="title" content="<?= $blog['titulo']; ?>">
+	<meta name="description" content="<?= $blog['descripcion']; ?>">
+
+	<?php
+		$palabras_claves = json_decode($blog['palabras_claves'], true);
+		$formato_palabras_claves = '';
+		foreach ($palabras_claves as $palabras) {
+			$formato_palabras_claves .= $palabras . ', ';
+		}
+		$formato_palabras_claves = substr($formato_palabras_claves, 0, -2);
+	?>
+
+	<meta name="keywords" content="<?= $formato_palabras_claves ?>">
+	<link rel="icon" href="<?= $blog['icono']; ?>">
 
 	<!--=====================================
 	PLUGINS DE CSS
