@@ -7,25 +7,25 @@
 					<div class="container p-0">
 						<div class="d-flex">
 							<div class="d-flex flex-column columna1">
-								<figure class="p-2 m-0 photo1" vinculo="categorias.html">
-									<p class="text-uppercase p-1 p-md-2 p-xl-1 small">Suramérica</p>
+								<figure class="p-2 m-0 photo1" vinculo="<?= $categorias[0]['ruta']?>" style="background: url(<?= $categorias[0]['imagen']?>);">
+									<p class="text-uppercase p-1 p-md-2 p-xl-1 small"><?= $categorias[0]['titulo']?></p>
 								</figure>
-								<figure class="p-2 m-0 photo2" vinculo="categorias.html">
-									<p class="text-uppercase p-1 p-md-2 p-xl-1 small">Africa</p>
+								<figure class="p-2 m-0 photo2" vinculo="<?= $categorias[4]['ruta']?>" style="background: url(<?= $categorias[4]['imagen']?>);">
+									<p class="text-uppercase p-1 p-md-2 p-xl-1 small"><?= $categorias[4]['titulo']?></p>
 								</figure>
 							</div>
 
 							<div class="d-flex flex-column flex-fill columna2">
 								<div class="d-block d-md-flex">
-									<figure class="p-2 m-0 flex-fill photo3" vinculo="categorias.html">
-										<p class="text-uppercase p-1 p-md-2 p-xl-1 small">Centromérica</p>
+									<figure class="p-2 m-0 flex-fill photo3" vinculo="<?= $categorias[1]['ruta']?>" style="background: url(<?= $categorias[1]['imagen']?>);">
+										<p class="text-uppercase p-1 p-md-2 p-xl-1 small"><?= $categorias[1]['titulo']?></p>
 									</figure>
-									<figure class="p-2 m-0 flex-fill photo4" vinculo="categorias.html">
-										<p class="text-uppercase p-1 p-md-2 p-xl-1 small">Europa</p>
+									<figure class="p-2 m-0 flex-fill photo4" vinculo="<?= $categorias[3]['ruta']?>" style="background: url(<?= $categorias[3]['imagen']?>);">
+										<p class="text-uppercase p-1 p-md-2 p-xl-1 small"><?= $categorias[3]['titulo']?></p>
 									</figure>
 								</div>
-								<figure class="p-2 m-0 photo5" vinculo="categorias.html">
-									<p class="text-uppercase p-1 p-md-2 p-xl-1 small">Norteamérica</p>
+								<figure class="p-2 m-0 photo5" vinculo="<?= $categorias[2]['ruta']?>" style="background: url(<?= $categorias[2]['imagen']?>);">
+									<p class="text-uppercase p-1 p-md-2 p-xl-1 small"><?= $categorias[2]['titulo']?></p>
 								</figure>
 							</div>
 						</div>

@@ -1,5 +1,6 @@
 <?php
 	$blog = BlogControlador::obtenerBlog();
+	$categorias = BlogControlador::obtenerCategorias();
 ?>
 
 <!DOCTYPE html>

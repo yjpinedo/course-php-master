@@ -307,42 +307,42 @@ footer{
 .gridFooter .photo1{
 	height:200px;
 	background:url(../img/suramerica.jpg);
-	background-size:cover;
+	background-size:contain;
 	background-position:left;
 }
 
 .gridFooter .photo2{
 	height:100px;
 	background:url(../img/africa.jpg);
-	background-size:cover;
+	background-size:contain;
 	background-position:left;
 }
 
 .gridFooter .photo3{
 	height:100px;
 	background:url(../img/centroamerica.jpg);
-	background-size:cover;
+	background-size:contain;
 	background-position:left;
 }
 
 .gridFooter .photo4{
 	height:100px;
 	background:url(../img/europa.jpg);
-	background-size:cover;
+	background-size:contain;
 	background-position:left;
 }
 
 .gridFooter .photo5{
 	height:200px;
 	background:url(../img/norteamerica.jpg);
-	background-size:cover;
+	background-size:contain;
 	background-position:left;
 }
 
 .gridFooter .photo6{
 	height:200px;
 	background:url(../img/asia.jpg);
-	background-size:cover;
+	background-size:contain;
 	background-position:left;
 }
 
@@ -441,7 +441,7 @@ TABLET VERTICAL (MD revisamos en 768px)
 		height:300px;
 	}
 
-	.grid figure p{	
+	.grid figure p{
 		font-size:18px;
 	}
 
@@ -471,7 +471,7 @@ TABLET VERTICAL (MD revisamos en 768px)
 	.tituloArticulo{
 		font-size:20px;
 	}
-	
+
 }
 
 /*=============================================
@@ -521,11 +521,11 @@ MÓVIL HORIZONTAL (SM revisamos en 576px)
 		height:200px;
 	}
 
-	.grid figure p{	
+	.grid figure p{
 		font-size:16px;
 	}
 
-	.breadcrumb-item+.breadcrumb-item::before{		
+	.breadcrumb-item+.breadcrumb-item::before{
 	    width:40px;
 		background-size:contain;
 	}
@@ -558,7 +558,7 @@ MÓVIL HORIZONTAL (SM revisamos en 576px)
 	.opiniones p{
 		font-size:14px;
 	}
-	
+
 }
 
 /*=============================================
@@ -614,11 +614,11 @@ MOVIL VERTICAL (revisamos en 320px)
 		height:120px;
 	}
 
-	.grid figure p{	
+	.grid figure p{
 		font-size:14px;
 	}
 
-	.breadcrumb-item+.breadcrumb-item::before{		
+	.breadcrumb-item+.breadcrumb-item::before{
 	    width:40px;
 		background-size:contain;
 	}
@@ -660,6 +660,5 @@ MOVIL VERTICAL (revisamos en 320px)
 	.opiniones p{
 		font-size:12px;
 	}
-	
-}
 
+}

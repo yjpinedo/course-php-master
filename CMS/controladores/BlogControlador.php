@@ -6,4 +6,9 @@ class BlogControlador
     {
         return Blog::obtenerBlog('blog');
     }
+
+    public static function obtenerCategorias()
+    {
+        return Blog::obtenerCategorias();
+    }
 }
