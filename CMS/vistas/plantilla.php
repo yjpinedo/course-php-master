@@ -77,12 +77,14 @@
 			foreach ($categorias as $categoria) {
 				if ($_GET['pagina'] == $categoria['ruta']) {
 					include 'paginas/categorias.php';
+				} else {
+					include 'paginas/404.php';
+					break;
 				}
 			}
 		} else {
 			include 'paginas/inicio.php';
 		}
-
         include 'paginas/modulos/footer.php';
     ?>
 
