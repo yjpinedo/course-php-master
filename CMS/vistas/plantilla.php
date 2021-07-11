@@ -1,4 +1,6 @@
 <?php
+	$paginaEncontrada = true;
+	$metadadosEncontrados = true;
 	$blog = BlogControlador::obtenerBlog();
 	$categorias = BlogControlador::obtenerCategorias();
 ?>
@@ -8,21 +10,56 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?= $blog['titulo']; ?></title>
 
-	<meta name="title" content="<?= $blog['titulo']; ?>">
-	<meta name="description" content="<?= $blog['descripcion']; ?>">
+	<?php if (isset($_GET['pagina'])) : ?>
+		<?php foreach ($categorias as $categoria) : ?>
+			<?php if ($_GET['pagina'] == $categoria['ruta']) : ?>
+				<title><?= $blog['titulo']; ?> - <?= $categoria['titulo']; ?></title>
+				<meta name="title" content="<?= $categoria['titulo']; ?>">
+				<meta name="description" content="<?= $categoria['descripcion']; ?>">
+				<?php
+					$palabras_claves = json_decode($categoria['palabras_claves'], true);
+					$formato_palabras_claves = '';
+					foreach ($palabras_claves as $palabras) {
+						$formato_palabras_claves .= $palabras . ', ';
+					}
+					$formato_palabras_claves = substr($formato_palabras_claves, 0, -2);
+				?>
+				<meta name="keywords" content="<?= $formato_palabras_claves ?>">
+				<?php $metadadosEncontrados = true; break; ?>
+			<?php else: ?>
+				<?php $metadadosEncontrados = false; ?>
+			<?php endif ?>
+		<?php endforeach ?>
+		<?php if (!$metadadosEncontrados) : ?>
+			<title><?= $blog['titulo']; ?></title>
+			<meta name="title" content="<?= $blog['titulo']; ?>">
+			<meta name="description" content="<?= $blog['descripcion']; ?>">
+			<?php
+				$palabras_claves = json_decode($blog['palabras_claves'], true);
+				$formato_palabras_claves = '';
+				foreach ($palabras_claves as $palabras) {
+					$formato_palabras_claves .= $palabras . ', ';
+				}
+				$formato_palabras_claves = substr($formato_palabras_claves, 0, -2);
+			?>
+			<meta name="keywords" content="<?= $formato_palabras_claves ?>">
+		<?php endif ?>
+	<?php else: ?>
+		<title><?= $blog['titulo']; ?></title>
+		<meta name="title" content="<?= $blog['titulo']; ?>">
+		<meta name="description" content="<?= $blog['descripcion']; ?>">
+		<?php
+			$palabras_claves = json_decode($blog['palabras_claves'], true);
+			$formato_palabras_claves = '';
+			foreach ($palabras_claves as $palabras) {
+				$formato_palabras_claves .= $palabras . ', ';
+			}
+			$formato_palabras_claves = substr($formato_palabras_claves, 0, -2);
+		?>
+		<meta name="keywords" content="<?= $formato_palabras_claves ?>">
+	<?php endif ?>
 
-	<?php
-		$palabras_claves = json_decode($blog['palabras_claves'], true);
-		$formato_palabras_claves = '';
-		foreach ($palabras_claves as $palabras) {
-			$formato_palabras_claves .= $palabras . ', ';
-		}
-		$formato_palabras_claves = substr($formato_palabras_claves, 0, -2);
-	?>
-
-	<meta name="keywords" content="<?= $formato_palabras_claves ?>">
 	<link rel="icon" href="<?= $blog['icono']; ?>">
 
 	<!--=====================================
@@ -77,10 +114,15 @@
 			foreach ($categorias as $categoria) {
 				if ($_GET['pagina'] == $categoria['ruta']) {
 					include 'paginas/categorias.php';
-				} else {
-					include 'paginas/404.php';
+					$paginaEncontrada = true;
 					break;
+				} else {
+					$paginaEncontrada = false;
 				}
+			}
+
+			if (!$paginaEncontrada) {
+				include 'paginas/404.php';
 			}
 		} else {
 			include 'paginas/inicio.php';
