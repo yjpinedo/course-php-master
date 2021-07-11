@@ -73,7 +73,15 @@
         include 'paginas/modulos/buscador-movil.php';
         include 'paginas/modulos/menu.php';
 
-        include 'paginas/inicio.php';
+		if (isset($_GET['pagina'])) {
+			foreach ($categorias as $categoria) {
+				if ($_GET['pagina'] == $categoria['ruta']) {
+					include 'paginas/categorias.php';
+				}
+			}
+		} else {
+			include 'paginas/inicio.php';
+		}
 
         include 'paginas/modulos/footer.php';
     ?>

@@ -3,7 +3,7 @@
 		<div class="row">
 			<!-- LOGO -->
 			<div class="col-10 col-sm-11 col-md-8 pt-1 pt-lg-3 p-xl-0">
-				<a href="index.html">
+				<a href="<?= $blog['dominio']; ?>">
 					<img src="<?= $blog['logo']; ?>" alt="Logo de Juanito Travel" class="img-fluid logotipo">
 				</a>
 			</div>
